@@ -1,0 +1,45 @@
+{
+    "sqltools.connections": [
+        {
+            "mysqlOptions": {
+                "authProtocol": "default",
+                "enableSsl": "Disabled"
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 3306,
+            "driver": "MySQL",
+            "name": "FirstMySQLConnection",
+            "database": "myshop",
+            "username": "admin"
+        },
+        {
+            "mysqlOptions": {
+                "authProtocol": "default",
+                "enableSsl": "Disabled"
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 3306,
+            "driver": "MySQL",
+            "name": "FirstmySQLConnection",
+            "database": "myshop",
+            "username": "admin",
+            "password": ""
+        },
+        {
+            "mysqlOptions": {
+                "authProtocol": "default",
+                "enableSsl": "Disabled"
+            },
+            "previewLimit": 50,
+            "server": "mysq-web-tiem-banh.c.aivencloud.com",
+            "port": 28494,
+            "driver": "MySQL",
+            "name": "aiven-web-tiem-banh",
+            "database": "bakery-2",
+            "username": "avnadmin",
+            "password": "AVNS_SLJYzMID0Rrd-2eSS6_"
+        }
+    ]
+}
