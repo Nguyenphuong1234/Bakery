@@ -143,3 +143,10 @@ CREATE TABLE `vp_favourite_products` (
   CONSTRAINT `vp_favourite_products_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `vp_users` (`id`) ON DELETE CASCADE,
   CONSTRAINT `vp_favourite_products_favou_product_foreign` FOREIGN KEY (`favou_product`) REFERENCES `vp_products` (`prod_id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+
+UPDATE vp_users SET created_at = '2025-06-17 19:12:21' WHERE id = 1;
+UPDATE vp_users SET created_at = '2025-06-17 19:12:21' WHERE id = 10;
+
+
+
