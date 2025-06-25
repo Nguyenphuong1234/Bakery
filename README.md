@@ -37,25 +37,29 @@ Quản lý bánh ngọt (CRUD)
 Bảo mật: XSS, CSRF, Validation, Auth, Authorization
 ***
 # Sơ đồ hệ thống Website
-## Sơ đồ chức năng
+# Sơ đồ chức năng
 ![image](https://github.com/user-attachments/assets/d0f9b0e1-66ab-4468-b554-25e8a2d23998)
-## Sơ đồ thuật toán
-Đăng nhập
-
-![Screenshot 2025-06-19 111155](https://github.com/user-attachments/assets/39dc9222-15d0-4b30-a014-df7edbd807e6)
+# Sơ đồ thuật toán
+Đăng nhập 
+-
+  ![Screenshot 2025-06-19 111155](https://github.com/user-attachments/assets/39dc9222-15d0-4b30-a014-df7edbd807e6)
 
 Đăng ký
-
+-
 ![Screenshot 2025-06-19 113019](https://github.com/user-attachments/assets/15bae9cb-01a9-427f-a261-cf5362343ffb)
 
 Người dùng truy cập web khi đã đăng nhập
-![Screenshot 2025-06-19 115044](https://github.com/user-attachments/assets/20c35c38-4ccf-4c88-8a45-1b988ae175ff)
+-
+![image](https://github.com/user-attachments/assets/052b3f9f-4394-4b67-86f9-c76a9c8d8270)
 
 
 
+Admin truy cập hệ thống sau khi đăng nhập
+-
+![image](https://github.com/user-attachments/assets/50e25858-4185-42e6-92e5-bbd2b0ff16f9)
 
-
-
+# Sơ đồ khối
+![gen-h-z6739914805235_5fa9cb3881d6eedb44a8993527471a5f](https://github.com/user-attachments/assets/909066da-479f-40df-8092-82ee1153bb55)
 
 
 ## Cài đặt
@@ -226,6 +230,40 @@ class ProductController extends Controller
     }
 }
 ```
+AccountController
+```bash
+<?php
+
+namespace App\Http\Controllers\Admin;
+
+use App\Http\Controllers\Controller;
+use App\Models\VpUser;
+use Illuminate\Http\Request;
+
+class AccountController extends Controller
+{
+    public function getAccount()
+    {
+        $accounts = VpUser::Where('level', 2)->get();
+
+        return view('backend.account', compact('accounts'));
+    }
+    public function getDeleteAccount($id)
+    {
+        $account = VpUser::find($id);
+
+        $account->delete();
+
+        return redirect()->intended('admin/account')->with('success', 'Xóa tài khoản thành công!');
+    }
+}
+```
+
+
+# View
+Cấu trúc chính của view
+![Screenshot 2025-06-25 212317](https://github.com/user-attachments/assets/609e0249-c586-45f0-a24f-a548b25121d2)
+
 
 
 
@@ -233,6 +271,7 @@ class ProductController extends Controller
 # Một Số Hình Ảnh Chức Năng Chính
 ## Trang Chủ
 ![Screenshot 2025-06-19 033333](https://github.com/user-attachments/assets/62d3392c-cdd7-4a0c-8012-e73f5de9ce72)
+'''
 
 
 
