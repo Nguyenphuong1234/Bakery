@@ -1,6 +1,5 @@
- Cake Shop - Hệ thống quản lý bánh ngọt
+<h1 align="center">WEB QUẢN LÝ TIỆM BÁNH NGỌT- CAKE SHOP</h1>
 
-# WEB QUẢN LÝ TIỆM BÁNH NGỌT- CAKE SHOP
 # Sinh viên thực hiện
 - **Họ và tên:** Nguyễn Minh Phương  
 - **Mã sinh viên:** 23015738  
@@ -13,13 +12,13 @@ Mục đích:
 - Cung cấp công cụ cho quản trị viên để quản lý danh mục và sản phẩm bánh ngọt (CRUD), đồng thời phân quyền để bảo mật.
 - Cho phép người dùng cuối đăng ký và đăng nhập an toàn, xem và tương tác với các sản phẩm.
   
-## Công nghệ sử dụng
+# Công nghệ sử dụng
 - Laravel 10
 - Laravel Breeze (Xác thực)
 - MySQL (qua XAMPP)
 - Bootstrap
 
-## Chức năng chính
+# Chức năng chính
 Quản lý Người dùng (User)
 - Đăng ký/đăng nhập/reset mật khẩu (Laravel Breeze)
 
@@ -37,32 +36,26 @@ Quản lý bánh ngọt (CRUD)
 Bảo mật: XSS, CSRF, Validation, Auth, Authorization
 ***
 # Sơ đồ hệ thống Website
-# Sơ đồ chức năng
+## Sơ đồ chức năng
 ![image](https://github.com/user-attachments/assets/d0f9b0e1-66ab-4468-b554-25e8a2d23998)
-# Sơ đồ thuật toán
-Đăng nhập 
--
-  ![Screenshot 2025-06-19 111155](https://github.com/user-attachments/assets/39dc9222-15d0-4b30-a014-df7edbd807e6)
+## Sơ đồ thuật toán
+### Đăng nhập 
+![Screenshot 2025-06-19 111155](https://github.com/user-attachments/assets/39dc9222-15d0-4b30-a014-df7edbd807e6)
 
-Đăng ký
--
+### Đăng ký
 ![Screenshot 2025-06-19 113019](https://github.com/user-attachments/assets/15bae9cb-01a9-427f-a261-cf5362343ffb)
 
-Người dùng truy cập web khi đã đăng nhập
--
+### Người dùng truy cập web khi đã đăng nhập
 ![image](https://github.com/user-attachments/assets/052b3f9f-4394-4b67-86f9-c76a9c8d8270)
 
-
-
-Admin truy cập hệ thống sau khi đăng nhập
--
+### Admin truy cập hệ thống sau khi đăng nhập
 ![image](https://github.com/user-attachments/assets/50e25858-4185-42e6-92e5-bbd2b0ff16f9)
 
-# Sơ đồ khối
+## Sơ đồ khối
 ![gen-h-z6739914805235_5fa9cb3881d6eedb44a8993527471a5f](https://github.com/user-attachments/assets/909066da-479f-40df-8092-82ee1153bb55)
 
 
-## Cài đặt
+# Cài đặt
 ```bash
 git clone 'url'
 composer install
@@ -141,7 +134,7 @@ class VpProduct extends Model
     }
 }
 ```
-# Controller
+## Controller
 ProductController
 
 ```bash
@@ -260,9 +253,15 @@ class AccountController extends Controller
 ```
 
 
-# View
+## View
 Cấu trúc chính của view
 ![Screenshot 2025-06-25 212317](https://github.com/user-attachments/assets/609e0249-c586-45f0-a24f-a548b25121d2)
+
+## <h1> 🔒 Security Setup</h1>
+### Auth
+- Xác thực là quá trình kiểm tra danh tính của người dùng. Bắt buộc người dùng phải có tài khoản và đăng nhập
+  ![Screenshot 2025-06-25 232631](https://github.com/user-attachments/assets/aa8d317c-1679-4377-9ee6-9c325b6b8df9)
+
 
 
 
