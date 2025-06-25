@@ -33,7 +33,7 @@ Quản lý bánh ngọt (CRUD)
 - Xem danh sách sản phẩm theo danh mục
 - Upload hình ảnh, giá bán, mô tả sản phẩm
 
-Bảo mật: XSS, CSRF, Validation, Auth, Authorization
+Bảo mật:CSRF, Validation, Auth, Authorization,...
 ***
 # Sơ đồ hệ thống Website
 ## Sơ đồ chức năng
@@ -261,6 +261,19 @@ Cấu trúc chính của view
 ### Auth
 - Xác thực là quá trình kiểm tra danh tính của người dùng. Bắt buộc người dùng phải có tài khoản và đăng nhập
   ![Screenshot 2025-06-25 232631](https://github.com/user-attachments/assets/aa8d317c-1679-4377-9ee6-9c325b6b8df9)
+### Validation
+- Kiểm tra dữ liệu đầu vào (mật khẩu không rỗng, đủ dài, khớp nhau), Ngăn lỗi logic, Cải thiện bảo mật, Hiển thị lỗi người dùng rõ ràng.
+  ![Screenshot 2025-06-26 002143](https://github.com/user-attachments/assets/28f61de9-130f-4d13-aeaa-ce6ca00d9ff2)
+  
+### Authorization
+- Bảo vệ chức năng quan trọng (Chỉ admin mới được xóa tài khoản, duyệt bình luận, v.v.)
+- Chia quyền người dùng (Phân biệt quyền của khách, nhân viên, quản lý...)
+- Tránh lạm quyền (Người dùng thường không thể làm việc của admin)
+![Screenshot 2025-06-26 003323](https://github.com/user-attachments/assets/ec735b90-065a-4b0a-8d01-f00f0c74c9dd)
+
+### CSRF
+- Sử dụng @csrf để bảo vệ chống tấn công giả mạo yêu cầu từ phía người dùng:
+![Screenshot 2025-06-26 010013](https://github.com/user-attachments/assets/8ff970ef-c9bc-4a69-9d45-6613c9df9ff4)
 
 
 
@@ -270,29 +283,26 @@ Cấu trúc chính của view
 # Một Số Hình Ảnh Chức Năng Chính
 ## Trang Chủ
 ![Screenshot 2025-06-19 033333](https://github.com/user-attachments/assets/62d3392c-cdd7-4a0c-8012-e73f5de9ce72)
-'''
-
-
 
 ***
 ## Xác thực người dùng (Breeze)
-Đăng nhập
+- Đăng nhập
 ![Screenshot 2025-06-19 022554](https://github.com/user-attachments/assets/0c0adbb8-d516-4c63-ae0e-2b748c9fb81c)
 
-Đăng kí
+- Đăng kí
 ![Screenshot 2025-06-19 022615](https://github.com/user-attachments/assets/9e467f05-0e4b-4941-977f-ca0234465335)
 
-Đổi mật khẩu
+- Đổi mật khẩu
 ![Screenshot 2025-06-19 022642](https://github.com/user-attachments/assets/1aed320e-f3f1-4408-807b-a6e5292e97be)
 
 ## Trang Admin
 ![image](https://github.com/user-attachments/assets/4b3919ca-f426-4593-83e2-746b8c43eb4a)
 
-Trang quản lí người dùng- Tài khoản khách hàng
+- Trang quản lí người dùng- Tài khoản khách hàng
 ![Screenshot 2025-06-19 023704](https://github.com/user-attachments/assets/ca22ea28-b81c-4212-9e61-08936ae2e3d3)
 
-Trang danh sách sản phẩm
-- Thêm, sửa, xóa sản phẩm
+- Trang danh sách sản phẩm
+  +Thêm, sửa, xóa sản phẩm
 ![Screenshot 2025-06-19 023926](https://github.com/user-attachments/assets/d204d28d-3da5-4ef3-b118-7338f917253b)
 
 - Thêm sản phẩm
@@ -305,24 +315,24 @@ Trang danh sách sản phẩm
 ![Screenshot 2025-06-19 033512](https://github.com/user-attachments/assets/1cb2162c-4b95-46c2-b088-40d616a899f1)
 
 
-Trang danh mục sản phẩm ( Thêm mới, sửa, xóa )
+- Trang danh mục sản phẩm ( Thêm mới, sửa, xóa )
 ![Screenshot 2025-06-19 030144](https://github.com/user-attachments/assets/bec41b0b-435b-462e-a22e-729dba611e30)
 
-Trang bình luận đánh giá
-- Sau khi đặt bánh thành công, người dùng có thể gửi đánh giá và bình luận về sản phẩm đã mua.
-- Mỗi đánh giá sẽ được gửi đến admin và chờ phê duyệt trước khi hiển thị công khai.
-- Chỉ những bình luận đã được duyệt mới được hiển thị trên giao diện người dùng.
+- Trang bình luận đánh giá
+  + Sau khi đặt bánh thành công, người dùng có thể gửi đánh giá và bình luận về sản phẩm đã mua.
+  + Mỗi đánh giá sẽ được gửi đến admin và chờ phê duyệt trước khi hiển thị công khai.
+  + Chỉ những bình luận đã được duyệt mới được hiển thị trên giao diện người dùng.
 ![Screenshot 2025-06-19 030358](https://github.com/user-attachments/assets/b7b666a7-6c21-46df-a6c2-4a3df48d35a4)
 
 # Trang khách hàng(User)
-Tìm kiếm bánh mong muốn 
+- Tìm kiếm bánh mong muốn 
 ![Screenshot 2025-06-19 031528](https://github.com/user-attachments/assets/d4f95e77-ebc9-4491-aaa4-41ac7f1ab690)
 
-Chức năng cho phép người dùng lọc sản phẩm theo từng loại bánh, giúp dễ dàng tìm kiếm sản phẩm phù hợp.
+- Chức năng cho phép người dùng lọc sản phẩm theo từng loại bánh, giúp dễ dàng tìm kiếm sản phẩm phù hợp.
 ![image](https://github.com/user-attachments/assets/b25a8e72-c976-468d-bba4-28089c7d3ff7)
 
-Người dùng có thể click vào một sản phẩm bất kỳ từ danh sách để chuyển đến trang chi tiết, nơi hiển thị đầy đủ thông tin về sản phẩm.
+- Người dùng có thể click vào một sản phẩm bất kỳ từ danh sách để chuyển đến trang chi tiết, nơi hiển thị đầy đủ thông tin về sản phẩm.
 ![image](https://github.com/user-attachments/assets/ce8c2cca-2cc4-46e6-94c4-e02ce76cfcec)
 
-Chức năng cho phép khách hàng chọn mua sản phẩm, lưu vào giỏ hàng và tiến hành thanh toán.
+- Chức năng cho phép khách hàng chọn mua sản phẩm, lưu vào giỏ hàng và tiến hành thanh toán.
 ![image](https://github.com/user-attachments/assets/3e4da628-7201-4619-8454-05da8f21a187)
