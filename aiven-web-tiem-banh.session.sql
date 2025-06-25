@@ -145,8 +145,6 @@ CREATE TABLE `vp_favourite_products` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 
-UPDATE vp_users SET created_at = '2025-06-17 19:12:21' WHERE id = 1;
-UPDATE vp_users SET created_at = '2025-06-17 19:12:21' WHERE id = 10;
 
 
 

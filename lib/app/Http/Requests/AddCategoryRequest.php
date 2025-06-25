@@ -24,7 +24,7 @@ class AddCategoryRequest extends FormRequest
     public function rules()
     {
         return [
-            // 'category_name'=>'unique:vp_categories,cate_name'
+            'category_name'=>'unique:vp_categories,cate_name'
         ];
     }
 

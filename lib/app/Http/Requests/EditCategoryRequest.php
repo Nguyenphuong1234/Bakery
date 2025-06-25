@@ -24,7 +24,7 @@ class EditCategoryRequest extends FormRequest
     public function rules()
     {
         return [
-            // 'category_name'=>'unique:vp_categories,cate_name,' . $this->segment(4) . ',cate_id'
+            'category_name'=>'unique:vp_categories,cate_name,' . $this->segment(4) . ',cate_id'
         ];
     }
 

@@ -14,14 +14,14 @@ class ProductController extends Controller
 {
     public function getProduct()
     {
-        // $product_list = DB::table('vp_products')->join('vp_categories','vp_products.prod_cate', '=', 'vp_categories.cate_id')->orderBy('prod_id','desc')->get();
-        // return view('backend.product', compact('product_list'));
+        $product_list = DB::table('vp_products')->join('vp_categories','vp_products.prod_cate', '=', 'vp_categories.cate_id')->orderBy('prod_id','desc')->get();
+        return view('backend.product', compact('product_list'));
     }
 
     public function getCreateProduct()
     {
-        // $categories = VpCategory::all();
-        // return view('backend.addproduct', compact('categories'));
+        $categories = VpCategory::all();
+        return view('backend.addproduct', compact('categories'));
     }
 
     public function postCreateProduct(AddProductRequest $request)
