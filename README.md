@@ -34,10 +34,10 @@ Quản lý bánh ngọt (CRUD)
 - Upload hình ảnh, giá bán, mô tả sản phẩm
 
 Bảo mật:CSRF, Validation, Auth, Authorization,...
-***
 # Sơ đồ hệ thống Website
 ## Sơ đồ chức năng
-![image](https://github.com/user-attachments/assets/d0f9b0e1-66ab-4468-b554-25e8a2d23998)
+![Screenshot 2025-06-26 104315](https://github.com/user-attachments/assets/bbdea1d5-d896-4c1e-9f2b-bdd5a1563a75)
+
 ## Sơ đồ thuật toán
 ### Đăng nhập 
 ![Screenshot 2025-06-19 111155](https://github.com/user-attachments/assets/39dc9222-15d0-4b30-a014-df7edbd807e6)
