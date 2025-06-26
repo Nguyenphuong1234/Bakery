@@ -4,7 +4,7 @@
 - **Họ và tên:** Nguyễn Minh Phương  
 - **Mã sinh viên:** 23015738  
 - **Lớp:** Thiết kế web nâng cao-1-3-24 (COUR01.TH4)
-***
+  
 # Mô Tả Dự Án
 Ứng dụng Laravel giúp quản lý sản phẩm bánh ngọt, danh mục bánh ngọt và ngườ dùng. Hệ thống hỗ trợ đăng nhập, bảo mật, và thao tác CRUD với giao diện đơn giản.Giúp cả quản trị viên và khách hàng dễ dàng sử dụng.
 
@@ -54,23 +54,9 @@ Bảo mật:CSRF, Validation, Auth, Authorization,...
 ## Sơ đồ khối
 ![gen-h-z6739914805235_5fa9cb3881d6eedb44a8993527471a5f](https://github.com/user-attachments/assets/909066da-479f-40df-8092-82ee1153bb55)
 
+## Sơ đồ cấu trúc (Class Diagram)
+![Screenshot 2025-06-26 102851](https://github.com/user-attachments/assets/f22350a1-f29e-48c8-9f97-c841ac3b4803)
 
-# Cài đặt
-```bash
-git clone 'url'
-composer install
-cp .env.example .env
-php artisan key:generate
-# Cập nhật thông tin DB trong .env
-php artisan migrate --seed
-Tài khoản mẫu
-//admin
-Email: admin@gmail.com
-Pass: 123456
-//user
-Email: user@gmail.com
-Pass: 123456
-```
 ***
 # Code minh hoạ Project
 ## Model
@@ -134,6 +120,43 @@ class VpProduct extends Model
     }
 }
 ```
+VpCategory Model
+```bash
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class VpCategory extends Model
+{
+    use HasFactory;
+
+    protected $primaryKey = 'cate_id';
+    protected $guarded = [];
+}
+```
+VpComment Model
+```bash
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class VpComment extends Model
+{
+    use HasFactory;
+
+    protected $primaryKey = 'com_id';
+
+}
+```
+
+
+
 ## Controller
 ProductController
 
@@ -223,31 +246,95 @@ class ProductController extends Controller
     }
 }
 ```
-AccountController
+CategoryController
 ```bash
 <?php
 
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\VpUser;
+use App\Models\VpCategory;
+use Illuminate\Http\Request;
+use App\Http\Requests\AddCategoryRequest;
+use App\Http\Requests\EditCategoryRequest;
+use Illuminate\Support\Str;
+
+class CategoryController extends Controller
+{
+    public function getCategory()
+    {
+        $categories = VpCategory::all();
+
+        return view('backend.category', compact('categories'));
+    }
+    public function postCreateCategory(AddCategoryRequest $request)
+    {
+        $category = new VpCategory;
+        $category->cate_name = $request->category_name;
+        $category->cate_slug = Str::slug($request->category_name);
+
+        $category->save();
+        return back()->with('success', 'Thêm mới danh mục thành công!');
+    }
+    public function getEditCategory($id)
+    {
+        $category = VpCategory::find($id);
+
+        return view('backend.editcategory', compact('category'));
+    }
+    public function putUpdateCategory(EditCategoryRequest $request, $id)
+    {
+        $category = VpCategory::find($id);
+
+        $category->cate_name = $request->category_name;
+        $category->cate_slug = Str::slug($request->category_name);
+
+        $category->save();
+        return redirect()->intended('admin/category')->with('success', 'Chỉnh sửa danh mục thành công!');
+    }
+    public function getDeleteCategory($id)
+    {
+        $category = VpCategory::find($id);
+
+        $category->delete();
+
+        return redirect()->intended('admin/category')->with('success', 'Xóa danh mục thành công!');
+    }
+}
+```
+CommentController
+```bash
+<?php
+
+namespace App\Http\Controllers\Admin;
+
+use App\Http\Controllers\Controller;
+use App\Models\VpComment;
 use Illuminate\Http\Request;
 
-class AccountController extends Controller
+class CommentController extends Controller
 {
-    public function getAccount()
+    public function getComment()
     {
-        $accounts = VpUser::Where('level', 2)->get();
+        $comment_not_confirm = VpComment::Where('com_status', 0)->get();
+        $comment_confirmed = VpComment::Where('com_status', 1)->get();
 
-        return view('backend.account', compact('accounts'));
+        return view('backend.comment', compact('comment_not_confirm', 'comment_confirmed'));
     }
-    public function getDeleteAccount($id)
+    public function getDeleteComment($id)
     {
-        $account = VpUser::find($id);
+        $comment = VpComment::find($id);
+        $comment->delete();
 
-        $account->delete();
+        return redirect()->intended('admin/comment')->with('success', 'Xóa bình luận thành công!');
+    }
+    public function confirmComment($id)
+    {
+        $comment = VpComment::find($id);
+        $comment->com_status = 1;
+        $comment->save();
 
-        return redirect()->intended('admin/account')->with('success', 'Xóa tài khoản thành công!');
+        return redirect()->intended('admin/comment')->with('success', 'Duyệt bình luận thành công!');
     }
 }
 ```
@@ -257,7 +344,7 @@ class AccountController extends Controller
 Cấu trúc chính của view
 ![Screenshot 2025-06-25 212317](https://github.com/user-attachments/assets/609e0249-c586-45f0-a24f-a548b25121d2)
 
-## <h1> 🔒 Security Setup</h1>
+## 🔒 Security Setup
 ### Auth
 - Xác thực là quá trình kiểm tra danh tính của người dùng. Bắt buộc người dùng phải có tài khoản và đăng nhập
   ![Screenshot 2025-06-25 232631](https://github.com/user-attachments/assets/aa8d317c-1679-4377-9ee6-9c325b6b8df9)
@@ -336,3 +423,24 @@ Cấu trúc chính của view
 
 - Chức năng cho phép khách hàng chọn mua sản phẩm, lưu vào giỏ hàng và tiến hành thanh toán.
 ![image](https://github.com/user-attachments/assets/3e4da628-7201-4619-8454-05da8f21a187)
+***
+# Cài đặt
+```bash
+git clone 'url'
+composer install
+cp .env.example .env
+php artisan key:generate
+# Cập nhật thông tin DB trong .env
+php artisan migrate --seed
+Tài khoản mẫu
+//admin
+Email: admin@gmail.com
+Pass: 123456
+//user
+Email: user@gmail.com
+Pass: 123456
+```
+***
+# Liên kết
+- Link Repo: https://github.com/Nguyenphuong1234/Cakeshop
+- Link Page:  https://nguyenphuong1234.github.io/Cakeshop/
