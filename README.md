@@ -342,7 +342,8 @@ class CommentController extends Controller
 
 ## View
 Cấu trúc chính của view
-![Screenshot 2025-06-25 212317](https://github.com/user-attachments/assets/609e0249-c586-45f0-a24f-a548b25121d2)
+
+<img src="https://github.com/user-attachments/assets/609e0249-c586-45f0-a24f-a548b25121d2" width="500"/>
 
 ## 🔒 Security Setup
 ### Auth
