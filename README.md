@@ -426,7 +426,7 @@ Cấu trúc chính của view
 
 - Chức năng cho phép khách hàng chọn mua sản phẩm, lưu vào giỏ hàng và tiến hành thanh toán.
 ![image](https://github.com/user-attachments/assets/3e4da628-7201-4619-8454-05da8f21a187)
-***
+
 # Cài đặt
 ```bash
 git clone 'url'
@@ -447,3 +447,4 @@ Pass: 123456
 # Liên kết
 - Link Repo: https://github.com/Nguyenphuong1234/Cakeshop
 - Link Page:  https://nguyenphuong1234.github.io/Cakeshop/
+- Link Youtube: https://www.youtube.com/channel/UCT4sY7okoK4Jeg9oTUNquog
